@@ -1,7 +1,10 @@
-import Link from 'next/link';
 import React from 'react';
 
-const ServecesPage = () => {
+const Page = async ({ params }) => {
+    const { id } = await params;
+
+
+
     const persons = [
         { id: "u001", name: "Arif Hossain", image: "https://randomuser.me/api/portraits/men/1.jpg", city: "Dhaka" },
         { id: "u002", name: "Rafiq Ahmed", image: "https://randomuser.me/api/portraits/men/2.jpg", city: "Chattogram" },
@@ -15,21 +18,19 @@ const ServecesPage = () => {
         { id: "u010", name: "Nazrul M.", image: "https://randomuser.me/api/portraits/men/10.jpg", city: "Narayanganj" }
     ];
 
+
+    const singledata= persons.find(person=> person.id== id);
+
     return (
-        <div className="p-6">
-            <p className="font-bold text-3xl mb-6">Services Page</p>
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-                {persons.map(person => (
-                    <div key={person.id} className="border rounded-lg p-4 text-center shadow hover:shadow-lg transition">
-                        <Link href={`/serveces/${person.id}`}>
-                            <h2 className="text-lg font-semibold">{person.name}</h2>
-                            <p className="text-gray-500">{person.city}</p>
-                        </Link>
-                    </div>
-                ))}
-            </div>
+        <div>
+            <h1>Service Details</h1>
+            <p>ID: {id}</p>
+            <p>name: {singledata.name}</p>
+            <img src={singledata.image} />
+
+            
         </div>
     );
 };
 
-export default ServecesPage;
+export default Page;
