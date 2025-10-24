@@ -19,7 +19,14 @@ const Page = async ({ params }) => {
     ];
 
 
-    const singledata= persons.find(person=> person.id== id);
+    const singledata = persons.find(person => person.id == id);
+    if (!singledata) {
+        return (
+            <div className="p-6 text-center">
+                <h2 className="text-xl font-bold text-red-500">Service Not Found</h2>
+            </div>
+        );
+    }
 
     return (
         <div>
@@ -28,7 +35,7 @@ const Page = async ({ params }) => {
             <p>name: {singledata.name}</p>
             <img src={singledata.image} />
 
-            
+
         </div>
     );
 };
