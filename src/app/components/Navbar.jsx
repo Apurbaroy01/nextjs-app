@@ -1,13 +1,14 @@
+import Link from 'next/link';
 import React from 'react';
 
 const Navbar = () => {
     return (
         <nav className='flex justify-center'>
             <ul className='flex justify-between w-1/2'>
-                <li>Home</li>
-                <li>Sevices</li>
-                <li>About</li>
-                <li>Home</li>
+                <Link href="/"><li>Home</li></Link>
+                <Link href="/sevices"><li>Sevices</li></Link>
+                <Link href="/about"><li>About</li></Link>
+                
             </ul>
         </nav>
     );
